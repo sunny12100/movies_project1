@@ -4,10 +4,8 @@ import { checkValidData } from "../utils/validate";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const navigate = useNavigate();
   const [SignInForm, setSignInForm] = useState(true);
   const [EmailError, setEmailError] = useState(null);
   const [PasswordError, setPasswordError] = useState(null);
@@ -33,7 +31,6 @@ const Login = () => {
         // Signed up
         const user = userCredential.user;
         // ...
-        navigate("/browse");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -52,7 +49,6 @@ const Login = () => {
         // Signed in
         const user = userCredential.user;
         // ...
-        navigate("/browse");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -110,7 +106,7 @@ const Login = () => {
           onClick={toggleSignInForm}
         >
           {SignInForm
-            ? "New to Netflix? Sign Up Now!"
+            ? "New to AnimeCineplex? Sign Up Now!"
             : "Already a User? Sign In Now!"}
         </p>
       </form>

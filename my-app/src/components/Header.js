@@ -1,18 +1,23 @@
-import React from "react";
-import { auth } from "../utils/firebase";
+import React, { useEffect } from "react";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import logo_main from "../utils/images/logo.png";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { addUser, removeUser } from "../utils/userSlice";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const user = useSelector((store) => store.user);
 
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        navigate("/");
+
         console.log("User signed out");
       })
       .catch((error) => {
@@ -21,13 +26,23 @@ const Header = () => {
       });
   };
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName } = user;
+        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <div className="absolute w-full bg-gradient-to-b from-black z-10 flex justify-between ">
-      <img
-        className="h-25 w-40 mx-20 py-6 "
-        src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
-        alt="logo"
-      />
+      <img className="h-26 w-44 mx-20  " src={logo_main} alt="logo" />
       {user && (
         <div className="flex py-6 mx-10">
           <img
