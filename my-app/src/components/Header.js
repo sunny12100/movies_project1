@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,6 +45,7 @@ const Header = () => {
       <img className="h-26 w-44 mx-20  " src={logo_main} alt="logo" />
       {user && (
         <div className="flex py-6 mx-10">
+          <button className="h-10 w-32 bg-red-700 text-white">Anime</button>
           <img
             className="w-26 h-16 mx-5"
             src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png"

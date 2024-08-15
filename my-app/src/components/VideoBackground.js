@@ -24,7 +24,8 @@ const VideoBackground = ({ id }) => {
         src={
           "https://www.youtube.com/embed/" +
           trailerVideo +
-          "?si=_kYsDkGWUtnQVJru&amp;controls=0&autoplay=1&mute=1"
+          "?si=_kYsDkGWUtnQVJru&amp;controls=0&autoplay=1&mute=1&loop=1&playlist=" +
+          trailerVideo
         }
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

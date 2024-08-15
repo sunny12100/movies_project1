@@ -4,6 +4,7 @@ import Login from "./Login";
 import Browse from "./Browse";
 import { RouterProvider } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
+import AnimeBrowse from "./AnimeBrowse";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -14,6 +15,10 @@ const Body = () => {
     {
       path: "/browse",
       element: <Browse />,
+    },
+    {
+      path: "/anime",
+      element: <AnimeBrowse />,
     },
   ]);
 
