@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import { useDispatch } from "react-redux";
 import {
@@ -14,6 +14,11 @@ import { API_OPTIONS, API_OPTIONS_ANIME } from "../utils/constants";
 
 const Browse = () => {
   const dispatch = useDispatch();
+  const [movie, setMovie] = useState(true);
+  const ft = () => {
+    console.log("anime click");
+    movie(!movie);
+  };
 
   const getNowPlayingMovies = async () => {
     const data = await fetch(
@@ -65,13 +70,27 @@ const Browse = () => {
     getNowPlayingAnimes();
   }, []);
 
-  return (
-    <div>
-      <Header />
-      <MainContainer />
-      <SecondaryContainer />
-    </div>
-  );
+  if (movie === true)
+    return (
+      <div>
+        <Header movie={setMovie} />
+        {console.log(movie)}
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      </div>
+    );
+  else {
+    return (
+      <div>
+        <>
+          <Header movie={ft} />
+          <h1 className="text-6xl pt-70">titu don</h1>
+        </>
+      </div>
+    );
+  }
 };
 
 export default Browse;
