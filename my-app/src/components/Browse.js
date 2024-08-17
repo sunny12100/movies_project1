@@ -9,16 +9,17 @@ import {
 } from "../utils/movieSlice";
 import { addNowPlayingAnimes } from "../utils/animeSlice";
 import MainContainer from "./MainContainer";
+import AnimeMainContainer from "./AnimeMainContainer";
+import AnimeSecondaryContainer from "./AnimeSecondaryContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import { API_OPTIONS, API_OPTIONS_ANIME } from "../utils/constants";
 
 const Browse = () => {
-  const dispatch = useDispatch();
-  const [movie, setMovie] = useState(true);
-  const ft = () => {
-    console.log("anime click");
-    movie(!movie);
+  const [isAnime, setIsAnime] = useState(false);
+  const toggleAnime = () => {
+    setIsAnime(!isAnime);
   };
+  const dispatch = useDispatch();
 
   const getNowPlayingMovies = async () => {
     const data = await fetch(
@@ -70,27 +71,22 @@ const Browse = () => {
     getNowPlayingAnimes();
   }, []);
 
-  if (movie === true)
-    return (
-      <div>
-        <Header movie={setMovie} />
-        {console.log(movie)}
+  return (
+    <>
+      <Header toggle={toggleAnime} isAnime={isAnime} />
+      {isAnime ? (
+        <>
+          <AnimeMainContainer />
+          <AnimeSecondaryContainer />
+        </>
+      ) : (
         <>
           <MainContainer />
           <SecondaryContainer />
         </>
-      </div>
-    );
-  else {
-    return (
-      <div>
-        <>
-          <Header movie={ft} />
-          <h1 className="text-6xl pt-70">titu don</h1>
-        </>
-      </div>
-    );
-  }
+      )}
+    </>
+  );
 };
 
 export default Browse;

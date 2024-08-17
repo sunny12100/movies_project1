@@ -7,7 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../utils/userSlice";
 
-const Header = ({ ft }) => {
+const Header = ({ toggle, isAnime }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -45,8 +45,8 @@ const Header = ({ ft }) => {
       <img className="h-26 w-44 mx-20  " src={logo_main} alt="logo" />
       {user && (
         <div className="flex py-6 mx-10">
-          <button onClick={ft} className="h-10 w-32 bg-red-700 text-white">
-            Anime
+          <button onClick={toggle} className="h-10 w-32 bg-red-700 text-white">
+            {isAnime ? "Movie" : "Anime"}
           </button>
           <img
             className="w-26 h-16 mx-5"
