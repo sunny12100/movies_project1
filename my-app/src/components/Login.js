@@ -22,40 +22,42 @@ const Login = () => {
     if (message == "Password is not valid") setPasswordError("❌" + message);
     if (message) return;
     //Sign Up Logic
-
-    createUserWithEmailAndPassword(
-      auth,
-      email.current.value,
-      password.current.value
-    )
-      .then((userCredential) => {
-        // Signed up
-        const user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setPasswordError(errorCode + errorMessage);
-        // ..
-      });
+    {
+      !SignInForm
+        ? createUserWithEmailAndPassword(
+            auth,
+            email.current.value,
+            password.current.value
+          )
+            .then((userCredential) => {
+              // Signed up
+              const user = userCredential.user;
+              // ...
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              setPasswordError(errorCode + errorMessage);
+              // ..
+            })
+        : signInWithEmailAndPassword(
+            auth,
+            email.current.value,
+            password.current.value
+          )
+            .then((userCredential) => {
+              // Signed in
+              const user = userCredential.user;
+              // ...
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              setPasswordError(errorCode + errorMessage);
+            });
+    }
 
     //Sign In Logic
-    signInWithEmailAndPassword(
-      auth,
-      email.current.value,
-      password.current.value
-    )
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setPasswordError(errorCode + errorMessage);
-      });
   };
 
   return (
@@ -73,21 +75,21 @@ const Login = () => {
         </h1>
         {!SignInForm && (
           <input
-            className="min-h-12 min-w-4 mx-20 mt-8 bg-transparent text-white border-white  rounded-md"
+            className="min-h-12 shadow-[0px_0px_6px_1px_rgba(0,0,0,0.3)] shadow-white min-w-4 mx-20 mt-8 bg-transparent text-white border-white  rounded-md"
             type="text"
             placeholder="Full Name"
           />
         )}
         <input
           ref={email}
-          className="min-h-12 min-w-4 mx-20 mt-8 bg-transparent text-white border-white rounded-md"
+          className="min-h-12 shadow-[0px_0px_6px_1px_rgba(0,0,0,0.3)] shadow-white min-w-4 mx-20 mt-8 bg-transparent text-white border-white rounded-md"
           type="text"
           placeholder="Email Address"
         />
         <p className="text-red-600 font-bold mx-20">{EmailError}</p>
         <input
           ref={password}
-          className="min-h-12 min-w-4 mx-20 mt-6 bg-transparent text-white border-white rounded-md"
+          className="min-h-12 shadow-[0px_0px_6px_1px_rgba(0,0,0,0.3)] shadow-white min-w-4 mx-20 mt-6 bg-transparent text-white border-white rounded-md"
           type="text"
           placeholder="Password"
         />

@@ -9,7 +9,7 @@ export const API_OPTIONS = {
 export const API_OPTIONS_ANIME = {
   method: "GET",
   headers: {
-    "x-rapidapi-key": "be16bec6c8msh50da6553a416030p1f27f1jsn4765a1139112",
+    "x-rapidapi-key": "583640ccf3msh8148deb250f450dp1bb4b7jsn3bf6bcf74eb8",
     "x-rapidapi-host": "myanimelist.p.rapidapi.com",
   },
 };
