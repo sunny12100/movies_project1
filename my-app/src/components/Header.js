@@ -7,7 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../utils/userSlice";
 
-const Header = ({ toggle, isAnime }) => {
+const Header = ({ toggle, isAnime, toggleSearch, movieSearch }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -17,12 +17,11 @@ const Header = ({ toggle, isAnime }) => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-
-        console.log("User signed out");
+        // console.log("User signed out");
       })
       .catch((error) => {
         // An error happened.
-        console.error("Error signing out:", error);
+        // console.error("Error signing out:", error);
       });
   };
 
@@ -45,12 +44,22 @@ const Header = ({ toggle, isAnime }) => {
       <img className="w-32 mx-20  " src={logo_main} alt="logo" />
       {user && (
         <div className="flex py-6 mx-10">
+          {!movieSearch && (
+            <button
+              onClick={toggle}
+              className="h-10 mr-3 rounded-lg mt-3 w-32 font-bold bg-yellow-400 hover:bg-yellow-300 text-black"
+            >
+              {isAnime ? "Movie" : "Anime"}
+            </button>
+          )}
+
           <button
-            onClick={toggle}
-            className="h-10 rounded-lg mt-3 w-32 bg-purple-500 hover:bg-purple-400 text-white"
+            onClick={toggleSearch}
+            className="h-10  rounded-lg mt-3 w-32 font-bold bg-orange-400 hover:bg-orange-300 text-black"
           >
-            {isAnime ? "Movie" : "Anime"}
+            {movieSearch ? "Home" : "CinePlexAI"}
           </button>
+
           <img
             className=" h-16 mx-1"
             src="https://static.vecteezy.com/system/resources/previews/019/879/186/large_2x/user-icon-on-transparent-background-free-png.png"

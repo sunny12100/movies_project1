@@ -7,7 +7,7 @@ const AnimeMainContainer = () => {
   const animes = useSelector((store) => store.animes?.nowPlayingAnimes);
   if (animes === null) return;
   const mainAnime = animes[0];
-  console.log(mainAnime);
+  // console.log(mainAnime);
   return (
     <div>
       <AnimeTitle />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import { useDispatch } from "react-redux";
 import {
+  addGptMovieResult,
   addNowPlayingMovies,
   addPopularMovies,
   addTopRatedMovies,
@@ -13,11 +14,19 @@ import AnimeMainContainer from "./AnimeMainContainer";
 import AnimeSecondaryContainer from "./AnimeSecondaryContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import { API_OPTIONS, API_OPTIONS_ANIME } from "../utils/constants";
+import MovieSearch from "./MovieSearch";
+import MovieSearchList from "./MovieSearchList";
 
 const Browse = () => {
   const [isAnime, setIsAnime] = useState(false);
+  const [movieSearch, setMovieSearch] = useState(false);
   const toggleAnime = () => {
     setIsAnime(!isAnime);
+  };
+  const toggleSearch = () => {
+    setMovieSearch(!movieSearch);
+    if (movieSearch)
+      dispatch(addGptMovieResult({ movieResults: null, movieNames: null }));
   };
   const dispatch = useDispatch();
 
@@ -59,7 +68,7 @@ const Browse = () => {
       API_OPTIONS_ANIME
     );
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     dispatch(addNowPlayingAnimes(json));
   };
 
@@ -73,16 +82,30 @@ const Browse = () => {
 
   return (
     <>
-      <Header toggle={toggleAnime} isAnime={isAnime} />
-      {isAnime ? (
+      <Header
+        toggle={toggleAnime}
+        toggleSearch={toggleSearch}
+        isAnime={isAnime}
+        movieSearch={movieSearch}
+      />
+      {movieSearch ? (
         <>
-          <AnimeMainContainer />
-          <AnimeSecondaryContainer />
+          <MovieSearch />
+          <MovieSearchList />
         </>
       ) : (
         <>
-          <MainContainer />
-          <SecondaryContainer />
+          {isAnime ? (
+            <>
+              <AnimeMainContainer />
+              <AnimeSecondaryContainer />
+            </>
+          ) : (
+            <>
+              <MainContainer />
+              <SecondaryContainer />
+            </>
+          )}
         </>
       )}
     </>

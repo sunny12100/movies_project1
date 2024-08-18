@@ -66,14 +66,14 @@ const Login = () => {
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute flex flex-col rounded-md opacity-100 text-white bg-[rgba(0,0,0,0.7)] w-1/3 mx-auto right-0 left-0 h-3/4 my-28"
+        className="absolute border-red-600 border-4 flex flex-col rounded-md opacity-100 text-white bg-[rgba(0,0,0,0.7)] w-1/3 mx-auto right-0 left-0 h-3/4 my-28"
       >
         <h1 className="text-[2rem] font-bold mx-20 mt-8">
           {SignInForm ? "Sign In" : "Sign Up"}
         </h1>
         {!SignInForm && (
           <input
-            className="min-h-12 min-w-4 mx-20 mt-8 bg-transparent text-white border-white rounded-md"
+            className="min-h-12 min-w-4 mx-20 mt-8 bg-transparent text-white border-white  rounded-md"
             type="text"
             placeholder="Full Name"
           />
