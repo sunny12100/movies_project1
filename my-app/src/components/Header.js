@@ -6,10 +6,12 @@ import logo_main from "../utils/images/logo.png";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../utils/userSlice";
+import SignOutPopUp from "./SignOutPopUp";
 
-const Header = ({ toggle, isAnime, toggleSearch, movieSearch }) => {
+const Header = ({ toggle, isAnime, toggleSearch, isPlaying, movieSearch }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
 
   const user = useSelector((store) => store.user);
 
@@ -18,6 +20,7 @@ const Header = ({ toggle, isAnime, toggleSearch, movieSearch }) => {
       .then(() => {
         // Sign-out successful.
         // console.log("User signed out");
+        setShowModal(false);
       })
       .catch((error) => {
         // An error happened.
@@ -44,21 +47,26 @@ const Header = ({ toggle, isAnime, toggleSearch, movieSearch }) => {
       <img className="w-32 mx-20  " src={logo_main} alt="logo" />
       {user && (
         <div className="flex py-6 mx-10">
-          {!movieSearch && (
-            <button
-              onClick={toggle}
-              className="h-10 mr-3 rounded-lg mt-3 w-32 font-bold bg-yellow-400 hover:bg-yellow-300 text-black"
-            >
-              {isAnime ? "Movie" : "Anime"}
-            </button>
+          {!isPlaying ? (
+            <>
+              {!movieSearch && (
+                <button
+                  onClick={toggle}
+                  className="h-10 mr-3 rounded-lg mt-3 w-32 font-bold bg-yellow-400 hover:bg-yellow-300 text-black"
+                >
+                  {isAnime ? "Movie" : "Anime"}
+                </button>
+              )}
+              <button
+                onClick={toggleSearch}
+                className="h-10  rounded-lg mt-3 w-32 font-bold bg-orange-400 hover:bg-orange-300 text-black"
+              >
+                {movieSearch ? "Home" : "CinePlexAI"}
+              </button>
+            </>
+          ) : (
+            <></>
           )}
-
-          <button
-            onClick={toggleSearch}
-            className="h-10  rounded-lg mt-3 w-32 font-bold bg-orange-400 hover:bg-orange-300 text-black"
-          >
-            {movieSearch ? "Home" : "CinePlexAI"}
-          </button>
 
           <img
             className=" h-16 mx-1"
@@ -66,11 +74,17 @@ const Header = ({ toggle, isAnime, toggleSearch, movieSearch }) => {
             alt="user-icon"
           />
           <img
-            onClick={handleSignOut}
+            onClick={() => setShowModal(true)}
             className="w-26 h-16 cursor-pointer"
             src="https://www.freeiconspng.com/uploads/sign-out-logout-icon-0.png"
             alt="signout"
           />
+          {showModal && (
+            <SignOutPopUp
+              onConfirm={handleSignOut}
+              onCancel={() => setShowModal(false)}
+            />
+          )}
         </div>
       )}
     </div>
