@@ -3,7 +3,14 @@ import { POSTER_URL } from "../utils/constants";
 // import { useNavigate } from "react-router";
 // import MoviePlayer from "./MoviePlayer";
 
-const MovieCard = ({ poster, ft }) => {
+const MovieCard = ({ poster, ft, title1, movieTitle }) => {
+  const temp = () => {
+    movieTitle(title1);
+    console.log(movieTitle);
+    console.log(title1);
+
+    ft();
+  };
   // const [isPlaying, setIsPlaying] = useState(false);
   // const navigate = useNavigate();
 
@@ -14,10 +21,10 @@ const MovieCard = ({ poster, ft }) => {
 
   if (!poster) return null;
   return (
-    <div className="w-40 cursor-pointer pr-4 hover:scale-110 transition-transform ease-in-out  duration-200">
+    <div className="w-32 md:w-40 cursor-pointer pr-4 hover:scale-110 transition-transform ease-in-out  duration-200">
       <img
         className=""
-        onClick={ft}
+        onClick={temp}
         src={POSTER_URL + poster}
         alt="movie_poster"
       />

@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import MovieList from "./MovieList";
 
-const MovieSearchList = ({ ft }) => {
+const MovieSearchList = ({ ft, movieTitle }) => {
   const { movieResults, movieNames } = useSelector((store) => store.movies);
   if (!movieNames) return null;
   return (
@@ -11,9 +11,10 @@ const MovieSearchList = ({ ft }) => {
         {movieNames.map((movieName, index) => (
           <MovieList
             key={movieName}
-            title={movieName}
+            titleNew={movieName}
             movieList={movieResults[index]}
             ft={ft}
+            movieTitle={movieTitle}
           />
         ))}
       </div>

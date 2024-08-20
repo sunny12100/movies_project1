@@ -17,11 +17,13 @@ import { API_OPTIONS, API_OPTIONS_ANIME } from "../utils/constants";
 import MovieSearch from "./MovieSearch";
 import MovieSearchList from "./MovieSearchList";
 import MoviePlayer from "./MoviePlayer";
+import Footer from "./footer";
 
 const Browse = () => {
   const [isAnime, setIsAnime] = useState(false);
   const [movieSearch, setMovieSearch] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [movieTitle, setMovieTitle] = useState("");
   const toggleAnime = () => {
     setIsAnime(!isAnime);
   };
@@ -89,52 +91,57 @@ const Browse = () => {
   }, []);
 
   return (
-    <>
-      <Header
-        toggle={toggleAnime}
-        toggleSearch={toggleSearch}
-        isAnime={isAnime}
-        movieSearch={movieSearch}
-        isPlaying={isPlaying}
-      />
-      {movieSearch ? (
-        <>
-          {!isPlaying ? (
-            <>
-              <MovieSearch />
-              <MovieSearchList ft={togglePlay} />
-            </>
-          ) : (
-            <>
-              {" "}
-              <MoviePlayer />
-            </>
-          )}
-        </>
-      ) : (
-        <>
-          {isAnime ? (
-            <>
-              <AnimeMainContainer />
-              <AnimeSecondaryContainer />
-            </>
-          ) : (
-            <>
-              {!isPlaying ? (
-                <>
-                  <MainContainer />
-                  <SecondaryContainer ft={togglePlay} />
-                </>
-              ) : (
-                <>
-                  <MoviePlayer />
-                </>
-              )}
-            </>
-          )}
-        </>
-      )}
-    </>
+    <div>
+      <>
+        <Header
+          toggle={toggleAnime}
+          toggleSearch={toggleSearch}
+          isAnime={isAnime}
+          movieSearch={movieSearch}
+          isPlaying={isPlaying}
+        />
+        {movieSearch ? (
+          <>
+            {!isPlaying ? (
+              <>
+                <MovieSearch />
+                <MovieSearchList ft={togglePlay} movieTitle={setMovieTitle} />
+              </>
+            ) : (
+              <>
+                <MoviePlayer movieTitle={movieTitle} />
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            {isAnime ? (
+              <>
+                <AnimeMainContainer />
+                <AnimeSecondaryContainer />
+              </>
+            ) : (
+              <>
+                {!isPlaying ? (
+                  <>
+                    <MainContainer />
+                    <SecondaryContainer
+                      ft={togglePlay}
+                      movieTitle={setMovieTitle}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <MoviePlayer movieTitle={movieTitle} />
+                  </>
+                )}
+              </>
+            )}
+          </>
+        )}
+        <Footer />
+      </>
+    </div>
   );
 };
 

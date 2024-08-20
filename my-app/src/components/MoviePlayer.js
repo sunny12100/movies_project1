@@ -2,18 +2,24 @@ import React from "react";
 import ReactPlayer from "react-player";
 import { login_bg } from "../utils/constants";
 
-const MoviePlayer = () => {
+const MoviePlayer = ({ movieTitle }) => {
   return (
-    <div className="media-player aspect-video z-0 ">
-      <img src={login_bg} alt="" className="fixed z-0 opacity-90" />
-      <div className="pt-[15%] pl-[30%] absolute z-0">
-        <h1 className=" absolute  text-6xl bg-gradient-to-t from-black  text-white -mt-28 ml-28">
-          MEDIA PLAYER
-        </h1>
+    <div className="">
+      <img
+        src={login_bg}
+        alt=""
+        className="fixed z-0 opacity-80 h-screen object-cover md:w-screen"
+      />
+      <h1 className=" absolute z-0 mt-[40%] md:mr-0 mr-[5%] ml-[5%] md:mt-[7%] bg-red-600 rounded-lg p-2 md:ml-[25%]  font-bold text-xl  md:text-5xl text-white ">
+        Movie Name : {movieTitle}
+      </h1>
+      <div className="mt-[60%] md:pt-[15%] md:ml-0 md:mt-0 md:pl-[30%] ml-10 fixed z-0 md:h-[80%] md:w-3/4 w-[80%] h-[30%]">
         <ReactPlayer
-          className="aspect-video w-[50%] h-[50%] "
+          className=" aspect-video"
           url="https://www.youtube.com/watch?v=WO2b03Zdu4Q"
           controls
+          width="100%"
+          height="100%"
         />
       </div>
     </div>

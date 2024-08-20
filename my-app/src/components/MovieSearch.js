@@ -59,23 +59,27 @@ const MovieSearch = () => {
 
   return (
     <div>
-      <div className="fixed ">
-        <img className="" src={login_bg} alt="" />
+      <div className="absolute ">
+        <img
+          className="h-screen fixed object-cover md:fixed md:w-screen"
+          src={login_bg}
+          alt=""
+        />
       </div>
       <div className="pt-[35%] md:pt-[10%] flex justify-center">
         <form
-          className="w-full absolute z-5 md:w-1/2 bg-black grid grid-cols-12"
+          className="w-[90%] md:w-1/2 absolute z-5  bg-black grid grid-cols-12"
           onSubmit={(e) => e.preventDefault()}
         >
           <input
             ref={searchText}
             type="text"
-            className=" p-4 m-4 col-span-9"
+            className="p-1 m-2 md:p-4 md:m-4 col-span-9"
             placeholder="What Would you like to watch today?"
           />
           <button
             onClick={handleSearch}
-            className="col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg"
+            className="col-span-3 md:my-4 md:mx-4 mx-1 my-4 py-2 md:px-4 px-0 bg-red-700 text-white rounded-lg"
           >
             SEARCH
           </button>
