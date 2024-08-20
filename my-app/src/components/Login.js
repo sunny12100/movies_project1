@@ -64,7 +64,7 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="absolute z-5">
+      <div className="fixed z-5">
         <img
           className="h-screen object-cover md:w-screen "
           src={login_bg}
