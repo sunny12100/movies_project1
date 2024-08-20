@@ -117,8 +117,20 @@ const Browse = () => {
           <>
             {isAnime ? (
               <>
-                <AnimeMainContainer />
-                <AnimeSecondaryContainer />
+                {" "}
+                {!isPlaying ? (
+                  <>
+                    <AnimeMainContainer />
+                    <AnimeSecondaryContainer
+                      ft={togglePlay}
+                      movieTitle={setMovieTitle}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <MoviePlayer movieTitle={movieTitle} />
+                  </>
+                )}
               </>
             ) : (
               <>

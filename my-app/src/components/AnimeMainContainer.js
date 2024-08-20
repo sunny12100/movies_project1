@@ -9,8 +9,8 @@ const AnimeMainContainer = () => {
   const mainAnime = animes[0];
   // console.log(mainAnime);
   return (
-    <div>
-      <AnimeTitle />
+    <div className="md:pt-0 pt-48 bg-black">
+      <AnimeTitle title={mainAnime.title} />
       <AnimeBackground />
     </div>
   );
