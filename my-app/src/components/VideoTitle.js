@@ -8,7 +8,7 @@ const VideoTitle = ({ title, overview }) => {
       </h1>
       <img
         className="h-[20%] w-[40%] hidden md:block md:h-1/4 md:w-1/4 pt-12 "
-        src="https://image.tmdb.org/t/p/original/o3z2RjJmSPXqEeun9sE88tzYGUT.png"
+        src="https://image.tmdb.org/t/p/original/v3lvNVqAuCfFpl2tqZNL4OIIUl5.png"
         alt=""
       />
       <p className="hidden md:inline-block w-[33%] pt-4 text-white">
