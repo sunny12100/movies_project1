@@ -13,11 +13,11 @@ Netflix GPT is an AI-powered platform that helps users discover personalized mov
 
 ## 🌟 Features
 
-### 1. **Personalized Recommendations**
-- 🎯 Get movie , anime and TV show suggestions tailored to your preferences.
-- 🧠 Leverages Gemini AI to understand user queries and generate intelligent results.
+### 1. **Login And Sign Up**
+- 📱 Optimized for mobile, tablet, and desktop devices.
+- 🎨 Sleek and modern design for an enhanced user experience.
 
-![Personalized Recommendations](./images/recommendations.png)
+![Responsive Design](./my-app/public/1.png)
 
 ---
 
@@ -25,7 +25,7 @@ Netflix GPT is an AI-powered platform that helps users discover personalized mov
 - 🔥 Displays the most popular and trending titles worldwide.
 - 🌍 Filters content based on region and language preferences.
 
-![Trending Content](./images/trending.png)
+![Trending Content](./my-app/public/2.png)
 
 ---
 
@@ -33,23 +33,23 @@ Netflix GPT is an AI-powered platform that helps users discover personalized mov
 - 😄 Find content based on mood, e.g., "feel-good movies" or "thrillers."
 - 🎭 Explore genres like action, comedy, romance, and more.
 
-![Mood and Genre Search](./images/mood-genre.png)
+![Mood and Genre Search](./my-app/public/3.png)
 
 ---
 
-### 4. **Watchlist Management**
-- 📋 Add movies and TV shows to your personalized watchlist.
-- ✅ Mark items as watched or remove them easily.
+### 4. **Trending Animes**
+- 🔥 Displays the most popular and trending titles worldwide.
+- 🌍 Filters content based on region and language preferences.
 
-![Watchlist Management](./images/watchlist.png)
+![Trending Content](./my-app/public/4.png)
 
 ---
 
-### 5. **Responsive and Intuitive UI**
-- 📱 Optimized for mobile, tablet, and desktop devices.
-- 🎨 Sleek and modern design for an enhanced user experience.
+### 5. **Personalized Recommendations**
+- 🎯 Get movie , anime and TV show suggestions tailored to your preferences.
+- 🧠 Leverages Gemini AI to understand user queries and generate intelligent results.
 
-![Responsive Design](./images/responsive.png)
+![Personalized Recommendations](./my-app/public/5.png)
 
 ---
 
@@ -57,7 +57,7 @@ Netflix GPT is an AI-powered platform that helps users discover personalized mov
 - 💬 Interact with the AI assistant to get tailored recommendations.
 - 🤖 Supports natural language queries like "Recommend me a horror movie with high ratings."
 
-![AI Chat Assistant](./images/ai-chat.png)
+![AI Chat Assistant](./my-app/public/5.png)
 
 ---
 
@@ -84,6 +84,8 @@ Netflix GPT is an AI-powered platform that helps users discover personalized mov
    ```env
    GEMINI_API_KEY=your_api_key
    TMDB_API_KEY=your_tmdb_api_key
+   ANIME_API_KEY=your_anime_api_key
+   
    ```
 
 5. Start the development servers:
@@ -103,9 +105,9 @@ Netflix GPT is an AI-powered platform that helps users discover personalized mov
 ## 🌐 Live Demo
 
 Try the live version of Netflix GPT: [https://movies-8609d.web.app/](https://movies-8609d.web.app/)
-LOGIN Details
-Email : test123@gmail.com
-Password : Test123@gmail
+- LOGIN DETAILS
+- Email : test123@gmail.com
+- Password : Test123@gmail
 
 ---
 
